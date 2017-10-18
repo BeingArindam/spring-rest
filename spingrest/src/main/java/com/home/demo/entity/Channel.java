@@ -3,11 +3,7 @@ package com.home.demo.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "channel")
@@ -17,20 +13,22 @@ public class Channel {
 	private Long id;
 	private String name;
 	private Double price;
-	@ManyToOne
-	@JoinColumn(name = "account")
-	@JsonIgnore
-	private Account account;
 
+	/*
+	 * @ManyToOne
+	 *
+	 * @JoinColumn(name = "account")
+	 *
+	 * @JsonIgnore private Account account;
+	 */
 	public Channel() {
 	}
 
-	public Channel(Long id, String name, Double price, Account account) {
+	public Channel(Long id, String name, Double price) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
-		this.account = account;
 	}
 
 	public Long getId() {
@@ -57,14 +55,11 @@ public class Channel {
 		this.price = price;
 	}
 
-	public Account getAccount() {
-		return this.account;
-	}
-
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
+	/*
+	 * public Account getAccount() { return this.account; }
+	 * 
+	 * public void setAccount(Account account) { this.account = account; }
+	 */
 	@Override
 	public String toString() {
 		return "Channel [id=" + this.id + ", name=" + this.name + ", price=" + this.price + "]";

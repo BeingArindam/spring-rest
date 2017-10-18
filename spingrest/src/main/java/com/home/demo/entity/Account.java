@@ -1,12 +1,8 @@
 package com.home.demo.entity;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,9 +16,6 @@ public class Account {
 	private Long id;
 	private String name;
 	private String email;
-
-	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-	private List<Channel> channels;
 
 	public Account() {
 	}
@@ -58,17 +51,14 @@ public class Account {
 		this.email = email;
 	}
 
-	public List<Channel> getChannels() {
-		return this.channels;
-	}
-
-	public void setChannels(List<Channel> channels) {
-		this.channels = channels;
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Account [id=" + this.id + ", name=" + this.name + ", email=" + this.email + ", channels="
-				+ this.channels + "]";
+		return "Account [id=" + this.id + ", name=" + this.name + ", email=" + this.email + "]";
 	}
+
 }
